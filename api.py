@@ -80,6 +80,10 @@ print(f"✅ Models loaded. {len(F)} posts ready for serving.")
 app = FastAPI(title="Feed Recommendation API", version="1.0")
 
 # ── schemas ───────────────────────────────────────────────────────────────────
+
+def get_health_status():
+    """Return a simple health status dictionary."""
+    return {"status": "healthy"}
 class RecommendRequest(BaseModel):
     aff: list[float]           # 15 floats: log1p(likes/watch/comment) per category
     hist_ids: list[int]        # last-N engaged post ids (empty for cold users)
